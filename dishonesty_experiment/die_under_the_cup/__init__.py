@@ -69,7 +69,7 @@ class RollDice(Page):
 ###################################################################
     # svk:
     @staticmethod
-    def vars_for_template(self):
+    def vars_for_template(self): # renaming player into self is not necessary. Otree names it as "player"? If yes, then keep "player".
         return {
             'actual_number': self.actual_number,
             'round_number': self.round_number,
