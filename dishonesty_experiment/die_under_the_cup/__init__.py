@@ -58,13 +58,26 @@ class RollDice(Page):
     form_model = 'player'
     form_fields = ['reported_number']
 
+    # @staticmethod
+    # def vars_for_template(player):
+    #     return {
+    #         'actual_number': player.actual_number,
+    #         'round_number': player.round_number,
+    #         'total_rounds': Constants.num_rounds
+    #     }
+
+###################################################################
+    # svk:
     @staticmethod
-    def vars_for_template(player):
+    def vars_for_template(self):
+        random_number = self.player.random_number
         return {
-            'actual_number': player.actual_number,
-            'round_number': player.round_number,
-            'total_rounds': Constants.num_rounds
+            'actual_number': self.player.actual_number,
+            'round_number': self.player.round_number,
+            'total_rounds': Constants.num_rounds,
+            'random_number': random_number
         }
+###################################################################
 
     def before_next_page(player, timeout_happened):
         player.set_payoff()
