@@ -31,7 +31,9 @@ USE_POINTS = False # to change points to ECU
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 0
 ECU_EXCHANGE_RATE = 1
 
-DEBUG = False
+# DEBUG = False
+# svk
+DEBUG = True
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable

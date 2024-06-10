@@ -15,8 +15,8 @@ class Subsession(BaseSubsession):
             player.actual_number = random.randint(1, 6)
             if self.round_number == 1:
                 player.frame = random.choice(['Gain', 'Loss'])
-            else:
-                player.frame = player.in_round(1).frame
+            # else:
+            #     player.frame = player.in_round(1).frame
 
 class Group(BaseGroup):
     pass
@@ -70,12 +70,11 @@ class RollDice(Page):
     # svk:
     @staticmethod
     def vars_for_template(self):
-        random_number = self.player.random_number
         return {
-            'actual_number': self.player.actual_number,
-            'round_number': self.player.round_number,
+            'actual_number': self.actual_number,
+            'round_number': self.round_number,
             'total_rounds': Constants.num_rounds,
-            'random_number': random_number
+            'frame': self.frame
         }
 ###################################################################
 
