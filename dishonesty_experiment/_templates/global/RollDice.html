@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% block content %}
+<h1>Round 1 of 20</h1>
+<p>Roll the die and report the number you see.</p>
+<div style="width: 100px; height: 100px; background-color: black; color: white; text-align: center; cursor: pointer;"
+     onmouseover="this.style.backgroundColor='white'; this.style.color='black'; this.innerHTML={{ actual_number }}"
+     onmouseout="this.style.backgroundColor='black'; this.style.color='white'; this.innerHTML='&nbsp;'">
+&nbsp;
+</div>
+<p>Your reported number:</p>
+{{ form.reported_number }}
+<p>Payoff this round: {{ player.reported_payoff }}</p>
+<p>Rounds remaining: {{ rounds_remaining }}</p>
+{% endblock %}
