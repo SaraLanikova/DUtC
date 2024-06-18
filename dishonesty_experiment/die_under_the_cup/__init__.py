@@ -11,9 +11,8 @@ class Constants(BaseConstants):
     endowment_loss_frame = c(6)  # Endowment for loss frame
 
 class Subsession(BaseSubsession):
-    # pass
-    def creating_session(self):
-        pass
+    pass
+    #def creating_session(self):
     #     for player in self.get_players():
     #         player.actual_number = random.randint(1, 6)
     #         if self.round_number == 1:
@@ -38,9 +37,9 @@ class Player(BasePlayer):
     actual_number = models.IntegerField()
     selected_for_payoff = models.BooleanField(initial=False)
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.actual_number = random.randint(1, 6)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.actual_number = random.randint(1, 6)
 
 
     def set_payoff(self):
@@ -88,7 +87,7 @@ class RollDice(Page):
 
 
     def is_displayed(player):
-        player.actual_number = random.randint(1, 6)
+        #player.actual_number = random.randint(1, 6)
         return player.round_number <= Constants.num_rounds  # Display the page for the specified number of rounds
 
 class Results(Page):
@@ -108,4 +107,8 @@ class Results(Page):
             'random_round': random_round,
         }
 
-page_sequence = [Introduction, RollDice, Results]
+class merci(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+page_sequence = [Introduction, RollDice, Results, merci]

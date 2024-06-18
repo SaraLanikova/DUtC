@@ -4,15 +4,39 @@
         display: none;
     }
 </style>
-    <h1>Welcome to the study!</h1>
-    <p>In this experiment, you will roll a die and report the outcome. Your payoff will depend on your reported number.</p>
-    <p>In this study, you will see a black square where appears a random number from 1 to 6 after you move your cursor into the square.</p>
+    <style>
+    .instructions {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>
+
+<div class="instructions"</div>
+    <h1>Instructions</h1>
+    <p>Please read the following instructions carefully to understand how the game works and what you need to do.</p>
+
+    <h3>Overview</h3>
+    <p>This study has <b>{{Constants.num_rounds}} rounds</b>. In each round, you will see a black die where is a randomly chosen hidden number from 1 to 6.
+        To uncover the number, you have to move your cursor into it.
+        After viewing the number, you will select the number you saw by clicking on one of the small squares below the die.
+        Once you select the number, your choice will be automatically submitted, and you will move on to the next round.
+        In the next round, there is a different random number in the die.</p>
+    <h3>Payoff</h3>
+    <p> Each number has a different reward. Your payoff will depend on number you report.
+        Your reward in the study is in ECU (Experimental Currency Unit) and the convert ratio is <b>1 ECU = 10 CZK</b>.
+        After the last round, a random round will be draw for your payoff. Based on your reported number in that round,
+        you will receive your payoff and the ECU will be converted to CZK.</p>
     <p>
         {% if player.frame == 'Loss' %}
-            You are endowed with {{ Constants.endowment_loss_frame }}. You lose ECU based on the number you report. For example, if you report you saw 1, you will lose 1 ECU from the {{ Constants.endowment_loss_frame }}, if you report that you saw 6 ECU, you will lose all your endowment.
+        <b>At the beginning of each round, you are endowed with {{ Constants.endowment_loss_frame }}.
+        You loose ECU based on the number you report.</b>
+        For example, if you report you saw 1, you will lose 1 ECU from the {{ Constants.endowment_loss_frame }}.
+        If you report that you saw 6 ECU, you will lose all your endowment.
 
         {% elif player.frame == 'Gain' %}
-            In this study, you will receive an ECU based on what number you report that you saw on the dice. For example, if you report number 2, you will receive 2 ECU.
+        <b>In this study, you will receive an ECU based on what number you report that you saw on the dice.</b>
+        For example, if you report number 1, you will receive 1 ECU. If you report number 2, you will receive 2 EUC, and so on.
+        However, for 6, you will receive 0 ECU.
 
         {% endif %}
     </p>
